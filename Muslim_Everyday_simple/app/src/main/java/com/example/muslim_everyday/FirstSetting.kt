@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.muslim_everyday.rv.FirstSettingRVAdapter
-import com.example.muslim_everyday.rv.Question
+import com.example.muslim_everyday.recycler_view.FirstSettingRVAdapter
+import com.example.muslim_everyday.data_class.Question
 
 class FirstSetting : AppCompatActivity() {
     private val questionsList = listOf<Question>(
