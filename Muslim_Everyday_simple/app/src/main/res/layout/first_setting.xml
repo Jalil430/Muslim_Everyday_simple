@@ -19,14 +19,13 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:fontFamily="@font/wood_stick"
             android:text="Проверка знании"
             android:textAlignment="textStart"
             android:textColor="@color/white"
-            android:textSize="23sp"
-            android:textStyle="bold" />
+            android:textSize="29sp"
+            android:textStyle="bold|italic" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
