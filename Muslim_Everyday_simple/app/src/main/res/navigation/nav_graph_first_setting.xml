@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_fs"
+    app:startDestination="@id/questionFragment_First_Setting">
+
+    <fragment
+        android:id="@+id/questionFragment_First_Setting"
+        android:name="com.example.muslim_everyday.QuestionFragment_First_Setting"
+        android:label="fragment_question__first__setting"
+        tools:layout="@layout/fragment_question__first__setting" />
+</navigation>
