@@ -35,7 +35,7 @@
                 android:layout_margin="8dp"
                 android:text="Вы встаёте на утренний намаз?"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="#004D40"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -54,6 +54,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/btn_color"
                     android:text="Да"
+                    android:textColor="#004D40"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:cornerRadius="20dp"
@@ -74,6 +75,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/btn_color"
                     android:text="Нет"
+                    android:textColor="#004D40"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:cornerRadius="20dp"

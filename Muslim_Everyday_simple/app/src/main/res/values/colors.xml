@@ -12,4 +12,9 @@
     <color name="main_bg">#FF018786</color>
     <color name="bg_darker">#024E4D</color>
     <color name="btn_color">#03A9F4</color>
+
+    <color name="bg_lighter2">#DAB603</color>
+    <color name="main_bg2">#838701</color>
+    <color name="bg_darker2">#4E4D02</color>
+    <color name="btn_color2">#F4CC03</color>
 </resources>

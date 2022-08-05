@@ -3,8 +3,10 @@ package com.example.muslim_everyday.recycler_view
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.muslim_everyday.FirstSetting
 import com.example.muslim_everyday.data_class.Question
 import com.example.muslim_everyday.databinding.FirstSettingRvBinding
 import com.example.muslim_everyday.databinding.FragmentQuestionFirstSettingBinding
@@ -14,7 +16,7 @@ class FirstSettingRVAdapter(private val questionsList: List<Question>) : Recycle
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         binding = FragmentQuestionFirstSettingBinding.inflate(LayoutInflater.from(parent.context))
 
-        return MyViewHolder(binding)
+        return MyViewHolder(parent ,binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -29,15 +31,6 @@ class FirstSettingRVAdapter(private val questionsList: List<Question>) : Recycle
 
 class MyViewHolder(private val binding : FragmentQuestionFirstSettingBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(questions: Question) {
-        binding.apply {
-            tvQuestion.text = questions.q
-            btnYes.setOnClickListener {
-                btnYes.isClickable = false
-                btnYes.isVisible = false
-                btnNo.isClickable = false
-                btnNo.isVisible = false
-                Log.i("MyTag", "disndsunf")
-            }
-        }
+        binding.tvQuestion.text = questions.q
     }
 }
