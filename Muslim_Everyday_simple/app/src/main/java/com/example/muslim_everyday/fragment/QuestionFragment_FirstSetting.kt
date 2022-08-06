@@ -1,17 +1,18 @@
 package com.example.muslim_everyday.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.findNavController
-import com.example.muslim_everyday.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.example.muslim_everyday.ViewModel_rv
 import com.example.muslim_everyday.databinding.FragmentQuestionFirstSettingBinding
 
-class QuestionFragment_First_Setting : Fragment() {
-    private lateinit var binding : FragmentQuestionFirstSettingBinding
+class QuestionFragment_FirstSetting : Fragment() {
+    private lateinit var binding: FragmentQuestionFirstSettingBinding
+    private val viewModel: ViewModel_rv by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +24,10 @@ class QuestionFragment_First_Setting : Fragment() {
     ): View? {
         binding = FragmentQuestionFirstSettingBinding.inflate(inflater, container, false)
 
-        binding.btnYes.setOnClickListener {
-//            it.findNavController().navigate(R.id.action_questionFragment_First_Setting_to_blAnswerFragment_First_Setting)
-            Toast.makeText(activity, "BtnClick", Toast.LENGTH_LONG).show()
+        binding.btnYes1.setOnClickListener {
+            Log.i("MyTag", "Click")
         }
+        viewModel.textView.value = binding.tvQuestion
 
         return binding.root
     }

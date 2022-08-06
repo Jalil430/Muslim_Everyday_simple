@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_fs"
-    app:startDestination="@id/questionFragment_First_Setting">
-
+    app:startDestination="@id/questionFragment_FirstSetting">
     <fragment
-        android:id="@+id/questionFragment_First_Setting"
-        android:name="com.example.muslim_everyday.fragment.QuestionFragment_First_Setting"
-        android:label="fragment_question__first__setting"
-        tools:layout="@layout/fragment_question__first__setting" />
+        android:id="@+id/questionFragment_FirstSetting"
+        android:name="com.example.muslim_everyday.fragment.QuestionFragment_FirstSetting"
+        android:label="fragment_question__first_setting"
+        tools:layout="@layout/fragment_question_first_setting" />
 </navigation>
