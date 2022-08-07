@@ -1,12 +1,9 @@
 package com.example.muslim_everyday
 
-import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.muslim_everyday.data_class.Question
 
 open class ViewModel_rv : ViewModel() {
-    val textView: MutableLiveData<TextView> by lazy {
-        MutableLiveData<TextView>()
-    }
+    lateinit var question: List<Question>
 
 }

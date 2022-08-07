@@ -1,18 +1,28 @@
 package com.example.muslim_everyday.recycler_view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.muslim_everyday.R
 import com.example.muslim_everyday.data_class.Question
 import com.example.muslim_everyday.databinding.FirstSettingRvBinding
 
-class FirstSettingRVAdapter(private val questionsList: List<Question>, private val textView: TextView?) : RecyclerView.Adapter<MyViewHolder>() {
+class FirstSettingRVAdapter(private val questionsList: List<Question>): RecyclerView.Adapter<MyViewHolder>() {
     private lateinit var binding: FirstSettingRvBinding
+    private lateinit var scaleInAnim: Animation
+    private lateinit var scaleOutAnim: Animation
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         binding = FirstSettingRvBinding.inflate(LayoutInflater.from(parent.context))
-        return MyViewHolder(binding, textView)
+
+        scaleInAnim = AnimationUtils.loadAnimation(parent.context,R.anim.scale_in)
+        scaleOutAnim = AnimationUtils.loadAnimation(parent.context, R.anim.scale_out)
+
+        return MyViewHolder(binding, scaleInAnim, scaleOutAnim)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -25,8 +35,91 @@ class FirstSettingRVAdapter(private val questionsList: List<Question>, private v
     }
 }
 
-class MyViewHolder(private val binding: FirstSettingRvBinding, private val textView: TextView?) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(questions: Question) {
+class MyViewHolder(private val binding: FirstSettingRvBinding,
+                   private val scaleInAnim: Animation,
+                   private val scaleOutAnim: Animation):
+    RecyclerView.ViewHolder(binding.root), Animation.AnimationListener {
+    private var isQuestionCardView = false
 
+    fun bind(questions: Question) {
+        scaleOutAnim.setAnimationListener(this)
+
+        binding.apply {
+            isQuestionCardView = false
+            activateQuestion(questions)
+            deactivateAnswer()
+
+            btnYes.setOnClickListener {
+                activateAnswer(questions)
+                deactivateQuestion()
+                isQuestionCardView = true
+
+                Log.i("MyTag", "Click!")
+            }
+
+            btnYes2.setOnClickListener {
+                activateQuestion(questions)
+                deactivateAnswer()
+                isQuestionCardView = false
+
+                Log.i("MyTag", "Click2!")
+            }
+        }
+    }
+
+    fun activateAnswer(questions: Question) {
+        binding.apply {
+            cvAnswer.isVisible = true
+            cvAnswer.isActivated = true
+            cvAnswer.startAnimation(scaleInAnim)
+            tvQuestion2.text = questions.a
+            btnYes2.isClickable = true
+            btnNo2.isClickable = true
+        }
+    }
+
+    fun deactivateAnswer() {
+        binding.apply {
+            isQuestionCardView = false
+            cvAnswer.startAnimation(scaleOutAnim)
+            btnYes2.isClickable = false
+            btnNo2.isClickable = false
+        }
+    }
+
+    fun activateQuestion(questions: Question) {
+        binding.apply {
+            cvQuestion.isVisible = true
+            cvQuestion.isActivated = true
+            cvQuestion.startAnimation(scaleInAnim)
+            tvQuestion.text = questions.q
+            btnYes.isClickable = true
+            btnNo.isClickable = true
+        }
+    }
+
+    fun deactivateQuestion() {
+        binding.apply {
+            isQuestionCardView = true
+            cvQuestion.startAnimation(scaleOutAnim)
+            btnYes.isClickable = false
+            btnNo.isClickable = false
+        }
+    }
+
+    override fun onAnimationStart(p0: Animation?) {
+    }
+
+    override fun onAnimationEnd(p0: Animation?) {
+        if(isQuestionCardView) {
+            binding.cvQuestion.isActivated = false
+            binding.cvQuestion.isVisible = false
+        }else {
+            binding.cvAnswer.isActivated = false
+            binding.cvAnswer.isVisible = false
+        }
+    }
+
+    override fun onAnimationRepeat(p0: Animation?) {
     }
 }

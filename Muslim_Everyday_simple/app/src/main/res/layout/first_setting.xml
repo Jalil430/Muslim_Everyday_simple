@@ -21,11 +21,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:fontFamily="@font/herou"
             android:text="Проверка знании"
             android:textAlignment="textStart"
-            android:textColor="@color/white"
+            android:textColor="#8A000000"
             android:textSize="29sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

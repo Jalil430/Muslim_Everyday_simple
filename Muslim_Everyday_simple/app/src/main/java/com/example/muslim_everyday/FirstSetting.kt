@@ -10,8 +10,8 @@ import com.example.muslim_everyday.recycler_view.FirstSettingRVAdapter
 
 class FirstSetting : AppCompatActivity() {
     private val questionsList = listOf<Question>(
-        Question("Встаёте ли вы на утренний намаз?"),
-        Question("Читаете ли вы Тасбих после каждого обязательного намаза?")
+        Question("Встаёте ли вы на утренний намаз?", "Включить будильник на утренний намаз?"),
+        Question("Читаете ли вы Тасбих после каждого обязательного намаза?", "Начать изучение Тасбиха и уведомлять об этом?")
     )
     private val viewModel: ViewModel_rv by viewModels()
 
@@ -20,11 +20,8 @@ class FirstSetting : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_setting)
 
-        val textView = viewModel.textView.value
-        textView?.text = questionsList[0].toString()
-
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = FirstSettingRVAdapter(questionsList, textView)
+        recyclerView.adapter = FirstSettingRVAdapter(questionsList)
     }
 }
