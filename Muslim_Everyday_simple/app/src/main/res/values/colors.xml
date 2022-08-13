@@ -17,4 +17,6 @@
     <color name="main_bg2">#838701</color>
     <color name="bg_darker2">#4E4D02</color>
     <color name="btn_color2">#F4D226</color>
+
+    <color name="blue_white">#C9FFFA</color>
 </resources>

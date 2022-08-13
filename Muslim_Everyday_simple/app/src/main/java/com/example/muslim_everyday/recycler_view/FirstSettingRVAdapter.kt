@@ -1,6 +1,6 @@
 package com.example.muslim_everyday.recycler_view
 
-import android.util.Log
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.Animation
@@ -9,20 +9,20 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.muslim_everyday.R
 import com.example.muslim_everyday.data_class.Question
-import com.example.muslim_everyday.databinding.FirstSettingRvBinding
+import com.example.muslim_everyday.databinding.QuestionCardItemBinding
 
 class FirstSettingRVAdapter(private val questionsList: List<Question>): RecyclerView.Adapter<MyViewHolder>() {
-    private lateinit var binding: FirstSettingRvBinding
+    private lateinit var binding: QuestionCardItemBinding
     private lateinit var scaleInAnim: Animation
     private lateinit var scaleOutAnim: Animation
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        binding = FirstSettingRvBinding.inflate(LayoutInflater.from(parent.context))
+        binding = QuestionCardItemBinding.inflate(LayoutInflater.from(parent.context))
 
         scaleInAnim = AnimationUtils.loadAnimation(parent.context,R.anim.scale_in)
         scaleOutAnim = AnimationUtils.loadAnimation(parent.context, R.anim.scale_out)
 
-        return MyViewHolder(binding, scaleInAnim, scaleOutAnim)
+        return MyViewHolder(binding, scaleInAnim, scaleOutAnim, parent.context)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -35,9 +35,10 @@ class FirstSettingRVAdapter(private val questionsList: List<Question>): Recycler
     }
 }
 
-class MyViewHolder(private val binding: FirstSettingRvBinding,
+class MyViewHolder(private val binding: QuestionCardItemBinding,
                    private val scaleInAnim: Animation,
-                   private val scaleOutAnim: Animation):
+                   private val scaleOutAnim: Animation,
+                   private val context: Context):
     RecyclerView.ViewHolder(binding.root), Animation.AnimationListener {
     private var isQuestionCardView = false
 
@@ -46,33 +47,40 @@ class MyViewHolder(private val binding: FirstSettingRvBinding,
 
         binding.apply {
             isQuestionCardView = false
-            activateQuestion(questions)
+            activateQuestion(questions.q)
             deactivateAnswer()
 
             btnYes.setOnClickListener {
-                activateAnswer(questions)
+                // Переход на второй card view
+                if(adapterPosition == 0) {
+                    activateAnswer("Все равно включить уведомление на утренний намаз?")
+                }
+                activateAnswer(questions.a)
                 deactivateQuestion()
                 isQuestionCardView = true
-
-                Log.i("MyTag", "Click!")
+            }
+            btnNo.setOnClickListener {
+                // Переход на второй card view
+                activateAnswer(questions.a)
+                deactivateQuestion()
+                isQuestionCardView = true
             }
 
             btnYes2.setOnClickListener {
-                activateQuestion(questions)
-                deactivateAnswer()
-                isQuestionCardView = false
-
-                Log.i("MyTag", "Click2!")
+                // Включить уведомление на намаз
+            }
+            btnNo2.setOnClickListener {
+                // Выключить уведомление на намаз
             }
         }
     }
 
-    fun activateAnswer(questions: Question) {
+    fun activateAnswer(question: String) {
         binding.apply {
             cvAnswer.isVisible = true
             cvAnswer.isActivated = true
             cvAnswer.startAnimation(scaleInAnim)
-            tvQuestion2.text = questions.a
+            tvQuestion2.text = question
             btnYes2.isClickable = true
             btnNo2.isClickable = true
         }
@@ -87,12 +95,12 @@ class MyViewHolder(private val binding: FirstSettingRvBinding,
         }
     }
 
-    fun activateQuestion(questions: Question) {
+    fun activateQuestion(question: String) {
         binding.apply {
             cvQuestion.isVisible = true
             cvQuestion.isActivated = true
             cvQuestion.startAnimation(scaleInAnim)
-            tvQuestion.text = questions.q
+            tvQuestion.text = question
             btnYes.isClickable = true
             btnNo.isClickable = true
         }
