@@ -22,7 +22,7 @@ class FirstSettingRVAdapter(private val questionsList: List<Question>): Recycler
         scaleInAnim = AnimationUtils.loadAnimation(parent.context,R.anim.scale_in)
         scaleOutAnim = AnimationUtils.loadAnimation(parent.context, R.anim.scale_out)
 
-        return MyViewHolder(binding, scaleInAnim, scaleOutAnim, parent.context)
+        return MyViewHolder(binding, scaleInAnim, scaleOutAnim)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -37,8 +37,7 @@ class FirstSettingRVAdapter(private val questionsList: List<Question>): Recycler
 
 class MyViewHolder(private val binding: QuestionCardItemBinding,
                    private val scaleInAnim: Animation,
-                   private val scaleOutAnim: Animation,
-                   private val context: Context):
+                   private val scaleOutAnim: Animation):
     RecyclerView.ViewHolder(binding.root), Animation.AnimationListener {
     private var isQuestionCardView = false
 

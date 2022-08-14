@@ -1,6 +1,8 @@
 package com.example.muslim_everyday
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +18,6 @@ class FirstSetting : AppCompatActivity() {
     )
     private val viewModel: ViewModel_rv by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_setting)
@@ -24,5 +25,11 @@ class FirstSetting : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = FirstSettingRVAdapter(questionsList)
+
+        val btnNext = findViewById<Button>(R.id.btnNext)
+        btnNext.setOnClickListener {
+            val intent = Intent(this, SettingsMenu::class.java)
+            startActivity(intent)
+        }
     }
 }
