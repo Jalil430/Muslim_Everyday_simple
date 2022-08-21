@@ -1,3 +1,3 @@
 package com.example.muslim_everyday.data_class
 
-data class Settings()
+data class Settings(val s: String)
