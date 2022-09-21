@@ -24,19 +24,19 @@
 
             <TextView
                 android:id="@+id/tvSetting"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="10"
                 android:fontFamily="@font/herou"
                 android:text="TextView"
                 android:textSize="23sp" />
 
             <Switch
                 android:id="@+id/switch1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:checked="true"
+                android:checked="false"
                 android:thumbTint="@color/btn_color"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
