@@ -49,17 +49,12 @@ class MyViewHolder2(private val binding: QuestionCardItemBinding,
             deactivateAnswer()
 
             btnYes.setOnClickListener {
-                // Переход на второй card view
-                if(adapterPosition == 0) {
-                    activateAnswer("Все равно включить уведомление на утренний намаз?")
-                }
-                activateAnswer(questions.a)
+                activateAnswer(questions.a2)
                 deactivateQuestion()
                 isQuestionCardView = true
             }
             btnNo.setOnClickListener {
-                // Переход на второй card view
-                activateAnswer(questions.a)
+                activateAnswer(questions.a1)
                 deactivateQuestion()
                 isQuestionCardView = true
             }
@@ -73,7 +68,7 @@ class MyViewHolder2(private val binding: QuestionCardItemBinding,
         }
     }
 
-    fun activateAnswer(question: String) {
+    private fun activateAnswer(question: String) {
         binding.apply {
             cvAnswer.isVisible = true
             cvAnswer.isActivated = true
@@ -84,7 +79,7 @@ class MyViewHolder2(private val binding: QuestionCardItemBinding,
         }
     }
 
-    fun deactivateAnswer() {
+    private fun deactivateAnswer() {
         binding.apply {
             isQuestionCardView = false
             cvAnswer.startAnimation(scaleOutAnim)
@@ -93,7 +88,7 @@ class MyViewHolder2(private val binding: QuestionCardItemBinding,
         }
     }
 
-    fun activateQuestion(question: String) {
+    private fun activateQuestion(question: String) {
         binding.apply {
             cvQuestion.isVisible = true
             cvQuestion.isActivated = true
@@ -104,7 +99,7 @@ class MyViewHolder2(private val binding: QuestionCardItemBinding,
         }
     }
 
-    fun deactivateQuestion() {
+    private fun deactivateQuestion() {
         binding.apply {
             isQuestionCardView = true
             cvQuestion.startAnimation(scaleOutAnim)

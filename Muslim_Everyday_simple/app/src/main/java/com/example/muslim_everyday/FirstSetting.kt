@@ -28,8 +28,8 @@ import org.json.JSONObject
 class FirstSetting : AppCompatActivity() {
     // Initialize list of questions this activity gives
     private val questionsList = listOf (
-        Question("Встаёте ли вы на утренний намаз?", "Включить будильник на утренний намаз?"),
-        Question("Читаете ли вы Тасбих после каждого обязательного намаза?", "Начать изучение Тасбиха и уведомлять об этом?")
+        Question("Встаёте ли вы на утренний намаз?", "Включить будильник на утренний намаз?", "Все равно включить будильник на утренний намаз?"),
+        Question("Читаете ли вы Тасбих после каждого обязательного намаза?", "Начать изучение Тасбиха и уведомлять об этом?", "Все равно начать изучение Тасбиха и уведомлять об этом?")
     )
     // Initialize view model
     private val viewModel: ViewModel_rv by viewModels()

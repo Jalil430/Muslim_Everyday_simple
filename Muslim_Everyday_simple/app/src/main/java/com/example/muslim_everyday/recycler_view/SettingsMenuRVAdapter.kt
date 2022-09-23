@@ -1,19 +1,11 @@
 package com.example.muslim_everyday.recycler_view
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.ViewModelFactoryDsl
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.RecyclerView
-import com.example.muslim_everyday.SettingsMenu
 import com.example.muslim_everyday.data_class.Settings
 import com.example.muslim_everyday.databinding.StringItemBinding
-import com.example.muslim_everyday.view_model.ViewModel_rv
 
 class SettingsMenuRVAdapter(private val settingsList: List<Settings>,
                             private val context: Context,

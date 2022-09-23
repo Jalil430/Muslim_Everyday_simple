@@ -1,15 +1,9 @@
 package com.example.muslim_everyday
 
 import android.app.*
-import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,16 +13,12 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.muslim_everyday.data_class.Settings
 import com.example.muslim_everyday.databinding.SettingsMenuBinding
-import com.example.muslim_everyday.recycler_view.MyViewHolder
+import com.example.muslim_everyday.receiver.NotificationReceiver
 import com.example.muslim_everyday.recycler_view.SettingsMenuRVAdapter
-import com.example.muslim_everyday.service.AlarmService
-import com.example.muslim_everyday.util.RandomIntUtil
-import com.example.muslim_everyday.view_model.ViewModel_rv
 import org.json.JSONException
 import java.util.*
-import java.util.Date.from
 
-open class SettingsMenu : AppCompatActivity() {
+class SettingsMenu : AppCompatActivity() {
     private lateinit var binding: SettingsMenuBinding
     // Initialize list of settings that contain in this activity
     private val settingsList = listOf (
@@ -55,16 +45,12 @@ open class SettingsMenu : AppCompatActivity() {
     // Notification
         private lateinit var pendingIntent: PendingIntent
         private lateinit var calendar: Calendar
-        private lateinit var notificationManager: NotificationManager
-        private lateinit var builder: NotificationCompat.Builder
-        private lateinit var alarmService: AlarmService
+        private lateinit var alarmManager: AlarmManager
         private var isNotificationEnabled = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_menu)
-
-        alarmService = AlarmService(this)
 
         // Get prayer timings
         getData()
@@ -88,54 +74,34 @@ open class SettingsMenu : AppCompatActivity() {
 
     private fun enableNotification() {
         setCalendar()
-        alarmService.setExactAlarm(calendar.timeInMillis)
+        intent = Intent(this, NotificationReceiver::class.java)
+        pendingIntent = PendingIntent.getBroadcast(this,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+
+        alarmManager.setExact(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            pendingIntent
+        )
     }
 
     private fun cancelNotification() {
-        alarmService.cancelNotification()
+        alarmManager.cancel(pendingIntent)
     }
 
     private fun setCalendar() {
         calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 13)
-        calendar.set(Calendar.MINUTE, 14)
+        calendar.set(Calendar.HOUR, 11)
+        calendar.set(Calendar.MINUTE, 4)
         calendar.set(Calendar.SECOND, 0)
         calendar.set(Calendar.MILLISECOND, 0)
     }
-
-    fun setNotification() {
-        val intent = Intent(this, SettingsMenu::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        pendingIntent = PendingIntent.getActivity(this, getRandomRequestCode(), intent, PendingIntent.FLAG_IMMUTABLE)
-
-        builder = NotificationCompat.Builder(this, "Fajr")
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Title")
-            .setContentText("Content Text")
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-    }
-
-    fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name : CharSequence = "FajrReminderChannel"
-            val description = "Channel for alarm manager"
-            val importance = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel("Fajr", name, importance)
-            channel.description = description
-
-            notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        } else {
-            Toast.makeText(this, "Alarm failed", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    fun startFajrNotification() {
-        notificationManager.notify(1, builder.build())
-    }
-
+    
     private fun getData() {
         // RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(this)
@@ -165,6 +131,4 @@ open class SettingsMenu : AppCompatActivity() {
         }, { error -> error.printStackTrace() })
         mRequestQueue?.add(request)
     }
-
-    private fun getRandomRequestCode() = RandomIntUtil.getRandomInt()
 }
