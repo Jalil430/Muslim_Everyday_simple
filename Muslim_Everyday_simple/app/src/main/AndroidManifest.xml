@@ -31,6 +31,6 @@
             android:exported="true">
         </activity>
 
-        <receiver android:name=".receiver.AlarmReceiver" />
+        <receiver android:name=".receiver.NotificationReceiver" />
     </application>
 </manifest>

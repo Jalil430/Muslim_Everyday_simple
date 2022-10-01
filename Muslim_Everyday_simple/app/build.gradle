@@ -37,7 +37,6 @@ android {
 
 dependencies {
 
-    // Adding volley library dependency
     implementation 'com.android.volley:volley:1.2.1'
 
     //Notification Library
