@@ -7,14 +7,14 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.example.muslim_everyday.R
 import com.example.muslim_everyday.SettingsMenu
-import com.example.muslim_everyday.util.RandomIntUtil
+import com.example.muslim_everyday.util.Constants
+import com.example.muslim_everyday.util.NotificationUtils
 
-class NotificationReceiver : BroadcastReceiver() {
+class NotificationReceiver() : BroadcastReceiver() {
     private lateinit var notificationManager: NotificationManager
     private lateinit var builderFajr: NotificationCompat.Builder
     private lateinit var builderDhuhr: NotificationCompat.Builder
@@ -23,11 +23,36 @@ class NotificationReceiver : BroadcastReceiver() {
     private lateinit var builderIsha: NotificationCompat.Builder
 
     override fun onReceive(context: Context, intent: Intent) {
-        Toast.makeText(context, "${System.currentTimeMillis()}", Toast.LENGTH_LONG).show()
+        val whichPrayerTimeNow = intent.getIntExtra(Constants.PRAYER_TIME_NOW, 0)
+        startNotification(context, whichPrayerTimeNow)
+        NotificationUtils.enableNotification(context)
+    }
 
+    private fun startNotification(context: Context, index: Int) {
         createNotificationChannel(context)
-        fajrSetNotification(context)
-        fajrStartNotification()
+
+        when (index) {
+            1 -> {
+                fajrSetNotification(context)
+                fajrStartNotification()
+            }
+            2 -> {
+                dhuhrSetNotification(context)
+                dhuhrStartNotification()
+            }
+            3 -> {
+                asrSetNotification(context)
+                asrStartNotification()
+            }
+            4 -> {
+                maghribSetNotification(context)
+                maghribStartNotification()
+            }
+            5 -> {
+                ishaSetNotification(context)
+                ishaStartNotification()
+            }
+        }
     }
 
     private fun createNotificationChannel(context: Context) {
@@ -132,5 +157,5 @@ class NotificationReceiver : BroadcastReceiver() {
                 notificationManager.notify(5, builderIsha.build())
             }
 
-    private fun getRandomRequestCode() = RandomIntUtil.getRandomInt()
+    private fun getRandomRequestCode() = NotificationUtils.getRandomInt()
 }

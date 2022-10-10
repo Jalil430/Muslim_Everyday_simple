@@ -4,6 +4,7 @@
     package="com.example.muslim_everyday">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
@@ -23,14 +24,32 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SettingsMenu"
             android:exported="true">
         </activity>
 
+        <receiver android:name=".receiver.TimeChangedReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".receiver.BootCompleteReceiver"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
         <receiver android:name=".receiver.NotificationReceiver" />
+        <receiver android:name=".receiver.RepeatingAlarmEveryday" />
     </application>
 </manifest>

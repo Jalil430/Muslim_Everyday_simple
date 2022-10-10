@@ -1,7 +1,9 @@
 package com.example.muslim_everyday
 
+import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -18,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.muslim_everyday.data_class.Question
+import com.example.muslim_everyday.receiver.BootCompleteReceiver
 import com.example.muslim_everyday.recycler_view.FirstSettingRVAdapter
 import com.example.muslim_everyday.view_model.ViewModel_rv
 import org.json.JSONArray
@@ -38,6 +41,8 @@ class FirstSetting : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_setting)
 
+        enableNotificationAfterRebootingAlarm()
+
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = FirstSettingRVAdapter(questionsList)
@@ -48,5 +53,14 @@ class FirstSetting : AppCompatActivity() {
             startActivity(intent)
         }
     }
-}
 
+    private fun enableNotificationAfterRebootingAlarm() {
+        val receiver = ComponentName(applicationContext, BootCompleteReceiver::class.java)
+
+        applicationContext.packageManager?.setComponentEnabledSetting(
+            receiver,
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+            PackageManager.DONT_KILL_APP
+        )
+    }
+}
