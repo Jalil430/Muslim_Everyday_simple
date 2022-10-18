@@ -9,12 +9,13 @@ import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.os.AsyncTask
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
-import com.android.volley.RequestQueue
+import androidx.core.app.ComponentActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.muslim_everyday.receiver.NotificationReceiver
+import com.example.muslim_everyday.view_model.ViewModelNotifications
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -28,13 +29,6 @@ import java.util.concurrent.atomic.AtomicInteger
 
 
 object NotificationUtils {
-    private val seed = AtomicInteger()
-    fun getRandomInt() = seed.getAndIncrement() + System.currentTimeMillis().toInt()
-
-    // API call
-        private var mRequestQueue: RequestQueue? = null
-        private const val url = "https://muslimsalat.com/Oyskhara.json?key=084c27252d935e5c202be396026a5adf"
-
     // Prayer timings variables
         var country : String? = null
         var state : String? = null
@@ -63,29 +57,31 @@ object NotificationUtils {
 
 
     fun enableNotification(context: Context) {
-        getData()
-        setCalendar(context)
+        DataTask().execute()
+        Handler().postDelayed({
+            setCalendar(context)
 
-        val intent = Intent(context, NotificationReceiver::class.java).apply {
-            putExtra(Constants.PRAYER_TIME_NOW, whichPrayerTimeNow)
-        }
+            val intent = Intent(context, NotificationReceiver::class.java).apply {
+                putExtra(Constants.PRAYER_TIME_NOW, whichPrayerTimeNow)
+            }
 
-        pendingIntent = PendingIntent.getBroadcast(
-            context,
-            getRandomInt(),
-            intent,
-            PendingIntent.FLAG_IMMUTABLE
-        )
-
-        alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
-
-        if (System.currentTimeMillis() < calendar!!.timeInMillis) {
-            alarmManager!!.setExact(
-                AlarmManager.RTC_WAKEUP,
-                calendar!!.timeInMillis,
-                pendingIntent
+            pendingIntent = PendingIntent.getBroadcast(
+                context,
+                Utils.getRandomInt(),
+                intent,
+                PendingIntent.FLAG_IMMUTABLE
             )
-        }
+
+            alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
+
+            if (System.currentTimeMillis() < calendar!!.timeInMillis) {
+                alarmManager!!.setExact(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar!!.timeInMillis,
+                    pendingIntent
+                )
+            }
+        }, 1500)
     }
 
     fun cancelNotification() {
@@ -162,42 +158,6 @@ object NotificationUtils {
         asrDate = parseDate(calendarAsrTime)
         maghribDate = parseDate(calendarMaghribTime)
         ishaDate = parseDate(calendarIshaTime)
-    }
-
-    private fun getData() {
-        DataTask().execute()
-
-        Log.i("MyTag", "KFD")
-//        // RequestQueue initialized
-//        mRequestQueue = Volley.newRequestQueue(context)
-//
-//        // String Request initialized
-//        val request = JsonObjectRequest(Request.Method.GET, url, null, {
-//                response ->
-//            try {
-//                Log.i("MyTag", "JIJIJ")
-//                // Get location
-//                country = response.get("country").toString()
-//                state = response.get("state").toString()
-//                city = response.get("city").toString()
-//                location = "$country, $state, $city"
-//
-//                // get date
-//                date = response.getJSONArray("items").getJSONObject(0).get("date_for").toString()
-//
-//                // Get namaz timings
-//                mFajr = response.getJSONArray("items").getJSONObject(0).get("fajr").toString()
-//                mDhuhr = response.getJSONArray("items").getJSONObject(0).get("dhuhr").toString()
-//                mAsr = response.getJSONArray("items").getJSONObject(0).get("asr").toString()
-//                mMaghrib = response.getJSONArray("items").getJSONObject(0).get("maghrib").toString()
-//                mIsha = response.getJSONArray("items").getJSONObject(0).get("isha").toString()
-//            } catch(e: JSONException) {
-//                e.printStackTrace()
-//                Log.i("MyTag", "LILIL")
-//            }
-//        }, { error -> error.printStackTrace() })
-//        mRequestQueue?.add(request)
-//        Log.i("MyTag", "NININ")
     }
 
     private fun parseDate(source: String) = dateFormat?.parse(source) as Date

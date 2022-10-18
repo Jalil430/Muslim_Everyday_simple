@@ -33,7 +33,7 @@
                 android:fontFamily="@font/herou"
                 android:textAlignment="center"
                 android:textColor="#8A000000"
-                android:textSize="26sp" />
+                android:textSize="30sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,30 +44,30 @@
                     android:id="@+id/btnYes2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="80dp"
                     android:layout_marginTop="3dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="80dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/btn_color2"
                     android:fontFamily="@font/herou"
                     android:text="Да"
                     android:textColor="#8A000000"
-                    android:textSize="23sp"
+                    android:textSize="26sp"
                     app:cornerRadius="15dp" />
 
                 <Button
                     android:id="@+id/btnNo2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="80dp"
                     android:layout_marginTop="3dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="80dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/btn_color2"
                     android:fontFamily="@font/herou"
                     android:text="Нет"
                     android:textColor="#8A000000"
-                    android:textSize="23sp"
+                    android:textSize="26sp"
                     app:cornerRadius="15dp" />
             </LinearLayout>
 
@@ -99,7 +99,7 @@
                 android:text="Начать изучение Тасбиха?"
                 android:textAlignment="center"
                 android:textColor="#8A000000"
-                android:textSize="26sp" />
+                android:textSize="30sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,30 +110,30 @@
                     android:id="@+id/btnYes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="80dp"
                     android:layout_marginTop="3dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="80dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/btn_color"
                     android:fontFamily="@font/herou"
                     android:text="Да"
                     android:textColor="#8A000000"
-                    android:textSize="23sp"
+                    android:textSize="26sp"
                     app:cornerRadius="15dp" />
 
                 <Button
                     android:id="@+id/btnNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="80dp"
                     android:layout_marginTop="3dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="80dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/btn_color"
                     android:fontFamily="@font/herou"
                     android:text="Нет"
                     android:textColor="#8A000000"
-                    android:textSize="23sp"
+                    android:textSize="26sp"
                     app:cornerRadius="15dp" />
             </LinearLayout>
 

@@ -39,11 +39,18 @@ class MyViewHolder(private val binding: StringItemBinding,
     fun bind(setting: Settings) {
         binding.apply {
             tvSetting.text = setting.s
+
+            val sharedPref = context.getSharedPreferences("Notifications", Context.MODE_PRIVATE) ?: return
+
             switch1.setOnClickListener {
                 if (switch1.isChecked) {
                     when (adapterPosition) {
                         0 -> {
                             isNotificationEnabled = true
+                            with(sharedPref.edit()) {
+                                this.putBoolean("isNotificationEnabled", isNotificationEnabled)
+                                apply()
+                            }
                             callback.invoke(isNotificationEnabled)
                         }
                     }
@@ -51,6 +58,10 @@ class MyViewHolder(private val binding: StringItemBinding,
                     when (adapterPosition) {
                         0 -> {
                             isNotificationEnabled = false
+                            with(sharedPref.edit()) {
+                                this.putBoolean("isNotificationEnabled", isNotificationEnabled)
+                                apply()
+                            }
                             callback.invoke(isNotificationEnabled)
                         }
                     }

@@ -19,7 +19,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:fontFamily="@font/herou"
             android:text="Проверка знании"

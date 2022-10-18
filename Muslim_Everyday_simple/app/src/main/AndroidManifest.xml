@@ -34,13 +34,6 @@
             android:exported="true">
         </activity>
 
-        <receiver android:name=".receiver.TimeChangedReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.TIME_SET" />
-            </intent-filter>
-        </receiver>
-
         <receiver
             android:name=".receiver.BootCompleteReceiver"
             android:enabled="false"
@@ -51,5 +44,7 @@
         </receiver>
         <receiver android:name=".receiver.NotificationReceiver" />
         <receiver android:name=".receiver.RepeatingAlarmEveryday" />
+
+        <service android:name=".service.NotificationService" />
     </application>
 </manifest>
