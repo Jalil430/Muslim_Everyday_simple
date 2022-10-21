@@ -30,6 +30,14 @@ class FirstSetting : AppCompatActivity() {
         enableNotificationAfterRebootingDevice()
         setRepeatingAlarm()
 
+
+        val btnBtn = findViewById<Button>(R.id.button)
+        btnBtn.setOnClickListener {
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
+        }
+
+
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = FirstSettingRVAdapter(questionsList)
@@ -53,8 +61,8 @@ class FirstSetting : AppCompatActivity() {
 
     private fun setRepeatingAlarm() {
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 0)
-        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.HOUR_OF_DAY, 1)
+        calendar.set(Calendar.MINUTE, 1)
         calendar.set(Calendar.SECOND, 0)
         calendar.set(Calendar.MILLISECOND, 0)
 

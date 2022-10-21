@@ -26,7 +26,7 @@
                 android:id="@+id/tvSetting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
+                android:layout_weight="8"
                 android:fontFamily="@font/herou"
                 android:text="TextView"
                 android:textSize="23sp" />

@@ -20,8 +20,6 @@ class SettingsMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_menu)
-
-        // Initialize view binding
         binding = SettingsMenuBinding.inflate(layoutInflater)
 
         // Initialize recycler view
