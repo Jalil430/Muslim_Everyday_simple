@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable-v24/ic_arrow_up_transparent.xml" value="0.243" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable-v24/ic_book_blue.xml" value="0.243" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable-v24/ic_home_blue.xml" value="0.243" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable-v24/ic_status_black.xml" value="0.243" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable/ic_arrow_up.xml" value="0.243" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable/ic_arrow_up_transparent.xml" value="0.243" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable/ic_baseline_arrow_drop_up_24.xml" value="0.243" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable/ic_baseline_grading_24.xml" value="0.2645" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.243" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/drawable/ic_book_black.xml" value="0.243" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout-land/first_setting.xml" value="0.46197916666666666" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout-large/first_setting.xml" value="0.36666666666666664" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout-normal/first_setting.xml" value="0.36666666666666664" />
@@ -18,13 +28,15 @@
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout-xlarge/first_setting.xml" value="0.34375" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/first_setting.xml" value="1.0" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_book_tab.xml" value="0.275" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_first_tab.xml" value="0.141015625" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_home.xml" value="1.5671296296296295" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_home_tab.xml" value="0.264453125" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_knowledge.xml" value="1.6296296296296295" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_second_tab.xml" value="0.141015625" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_status.xml" value="1.6296296296296295" />
-        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_status_tab.xml" value="0.264453125" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/fragment_status_tab.xml" value="0.33" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/main.xml" value="1.6296296296296295" />
-        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/main_menu.xml" value="0.199438202247191" />
+        <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/main_menu.xml" value="0.33" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/question_card_item.xml" value="1.550660792951542" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/settings_menu.xml" value="0.25" />
         <entry key="..\:/Jalil/Projects/Android/Muslim_Everyday/Muslim_Everyday_simple/app/src/main/res/layout/string_item.xml" value="0.36666666666666664" />

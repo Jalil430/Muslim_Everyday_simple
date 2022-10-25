@@ -27,25 +27,37 @@ class FirstSetting : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_setting)
 
-        enableNotificationAfterRebootingDevice()
-        setRepeatingAlarm()
+        val preferences = getPreferences(MODE_PRIVATE)
+        val hasVisited = preferences.getBoolean(HAS_VISITED, false)
 
-
-        val btnBtn = findViewById<Button>(R.id.button)
-        btnBtn.setOnClickListener {
+        if (hasVisited) {
             val intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
-        }
+        } else {
+            val e = preferences.edit()
+            e.putBoolean(HAS_VISITED, true)
+            e.apply()
+
+            enableNotificationAfterRebootingDevice()
+            setRepeatingAlarm()
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = FirstSettingRVAdapter(questionsList)
+            val btnBtn = findViewById<Button>(R.id.button)
+            btnBtn.setOnClickListener {
+                val intent = Intent(this, MainMenu::class.java)
+                startActivity(intent)
+            }
 
-        val btnNext = findViewById<Button>(R.id.btnNext)
-        btnNext.setOnClickListener {
-            val intent = Intent(this, SettingsMenu::class.java)
-            startActivity(intent)
+
+            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.adapter = FirstSettingRVAdapter(questionsList)
+
+            val btnNext = findViewById<Button>(R.id.btnNext)
+            btnNext.setOnClickListener {
+                val intent = Intent(this, SettingsMenu::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -85,5 +97,9 @@ class FirstSetting : AppCompatActivity() {
                 repeatingPendingIntent
             )
         }
+    }
+
+    companion object {
+        const val HAS_VISITED = "hasVisited"
     }
 }
