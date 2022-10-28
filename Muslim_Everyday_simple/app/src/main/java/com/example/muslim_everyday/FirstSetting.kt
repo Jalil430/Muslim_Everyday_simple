@@ -33,6 +33,7 @@ class FirstSetting : AppCompatActivity() {
         if (hasVisited) {
             val intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
+            finish()
         } else {
             val e = preferences.edit()
             e.putBoolean(HAS_VISITED, true)
@@ -46,6 +47,7 @@ class FirstSetting : AppCompatActivity() {
             btnBtn.setOnClickListener {
                 val intent = Intent(this, MainMenu::class.java)
                 startActivity(intent)
+                finish()
             }
 
 
@@ -57,6 +59,7 @@ class FirstSetting : AppCompatActivity() {
             btnNext.setOnClickListener {
                 val intent = Intent(this, SettingsMenu::class.java)
                 startActivity(intent)
+                finish()
             }
         }
     }

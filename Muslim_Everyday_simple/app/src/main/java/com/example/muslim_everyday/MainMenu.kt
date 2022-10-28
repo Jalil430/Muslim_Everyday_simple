@@ -1,6 +1,8 @@
 package com.example.muslim_everyday
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 
@@ -9,9 +11,5 @@ class MainMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_menu)
 
-        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
-
-        val adapter = MyViewPagerAdapter(supportFragmentManager, lifecycle)
-        viewPager.adapter = adapter
     }
 }
