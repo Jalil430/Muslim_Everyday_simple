@@ -1,36 +1,49 @@
 package com.example.muslim_everyday
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.muslim_everyday.data_class.SettingsList
 import com.example.muslim_everyday.databinding.SettingsMenuBinding
-import com.example.muslim_everyday.recycler_view.SettingsMenuRVAdapter
 import com.example.muslim_everyday.service.NotificationService
 
 class SettingsMenu : AppCompatActivity() {
     private var binding: SettingsMenuBinding? = null
     private var isNotificationEnabled = false
 
-    // Initialize list of settings that contain in this activity
-        private val settingsList = SettingsList.getSettingsList()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_menu)
-        binding = SettingsMenuBinding.inflate(layoutInflater)
+        binding = SettingsMenuBinding.inflate(LayoutInflater.from(this))
 
-        // Initialize recycler view
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = SettingsMenuRVAdapter(settingsList, this) {
-            isNotificationEnabled = it
+        val sharedPref = getSharedPreferences("Notifications", Context.MODE_PRIVATE) ?: return
 
-            Intent(this, NotificationService::class.java).also { intent ->
-                startService(intent)
+        val swAzan = findViewById<Switch>(R.id.swAzan)
+        swAzan.setOnClickListener {
+            if (swAzan.isChecked) {
+                isNotificationEnabled = true
+                with(sharedPref.edit()) {
+                    this.putBoolean("isNotificationEnabled", isNotificationEnabled)
+                    apply()
+                }
+
+                Intent(this@SettingsMenu, NotificationService::class.java).also { intent ->
+                    startService(intent)
+                }
+            } else {
+                isNotificationEnabled = false
+                with(sharedPref.edit()) {
+                    this.putBoolean("isNotificationEnabled", isNotificationEnabled)
+                    apply()
+                }
+
+                Intent(this@SettingsMenu, NotificationService::class.java).also { intent ->
+                    startService(intent)
+                }
             }
         }
-    } // SHARED PREFERENCES
+    }
 }

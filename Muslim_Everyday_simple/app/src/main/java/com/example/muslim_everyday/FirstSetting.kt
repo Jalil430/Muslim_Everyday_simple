@@ -27,17 +27,17 @@ class FirstSetting : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_setting)
 
-        val preferences = getPreferences(MODE_PRIVATE)
-        val hasVisited = preferences.getBoolean(HAS_VISITED, false)
+//        val preferences = getPreferences(MODE_PRIVATE)
+//        val hasVisited = preferences.getBoolean(HAS_VISITED, false)
 
-        if (hasVisited) {
-            val intent = Intent(this, MainMenu::class.java)
-            startActivity(intent)
-            finish()
-        } else {
-            val e = preferences.edit()
-            e.putBoolean(HAS_VISITED, true)
-            e.apply()
+//        if (hasVisited) {
+//            val intent = Intent(this, SettingsMenu::class.java)
+//            startActivity(intent)
+//            finish()
+//        } else {
+//            val e = preferences.edit()
+//            e.putBoolean(HAS_VISITED, true)
+//            e.apply()
 
             enableNotificationAfterRebootingDevice()
             setRepeatingAlarm()
@@ -61,7 +61,7 @@ class FirstSetting : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-        }
+//        }
     }
 
     private fun enableNotificationAfterRebootingDevice() {
