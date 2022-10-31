@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootSettingsMenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_darker"
@@ -37,7 +38,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tittleAzan"
@@ -61,6 +62,7 @@
                 android:padding="15dp">
 
                 <RelativeLayout
+                    android:id="@+id/rlAzan"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -86,17 +88,27 @@
                     <Switch
                         android:id="@+id/swAzan"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/tvAzan"
                         android:gravity="center"
                         android:text="Switch"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                        tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rlTasbih"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp">
@@ -121,18 +133,29 @@
                         android:textStyle="bold" />
 
                     <Switch
-                        android:id="@+id/switch2"
+                        android:id="@+id/swTasbih"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/tvTasbih"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rlAzkar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="7dp">
@@ -157,26 +180,35 @@
                         android:textStyle="bold" />
 
                     <Switch
-                        android:id="@+id/switch3"
+                        android:id="@+id/swAzkar"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/tvAzkar"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tittleOther"
+                android:id="@+id/tittleQQQ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center"
-                android:text="ПРОЧЕЕ"
+                android:text=".???????"
                 android:textColor="@color/blue_white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -217,13 +249,23 @@
                     <Switch
                         android:id="@+id/switch4"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/textView1"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -253,13 +295,23 @@
                     <Switch
                         android:id="@+id/switch5"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/textView2"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -288,13 +340,23 @@
                     <Switch
                         android:id="@+id/switch6"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/textView3"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -316,7 +378,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/imageView4"
                         android:fontFamily="@font/herou"
-                        android:text="Помощь"
+                        android:text=".??????"
                         android:textColor="@color/blue_white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -324,13 +386,23 @@
                     <Switch
                         android:id="@+id/switch7"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/textView4"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -342,7 +414,7 @@
                         android:id="@+id/imageView5"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        app:srcCompat="@android:drawable/ic_menu_info_details" />
+                        app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView5"
@@ -352,7 +424,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/imageView5"
                         android:fontFamily="@font/herou"
-                        android:text="О приложении"
+                        android:text=".??????"
                         android:textColor="@color/blue_white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -360,21 +432,42 @@
                     <Switch
                         android:id="@+id/switch8"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/textView5"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tittleOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center"
+                android:text="ПРОЧЕЕ"
+                android:textColor="@color/blue_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/round_back_secondary_100"
                 android:orientation="vertical"
@@ -407,13 +500,23 @@
                     <Switch
                         android:id="@+id/switch40"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/textView10"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -443,13 +546,23 @@
                     <Switch
                         android:id="@+id/switch50"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/textView20"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -478,16 +591,27 @@
                     <Switch
                         android:id="@+id/switch60"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/textView30"
                         android:gravity="center"
                         android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rlHelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp">
@@ -511,19 +635,20 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <Switch
-                        android:id="@+id/switch70"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_toEndOf="@id/textView40"
-                        android:gravity="center"
-                        android:text="Switch"
-                        tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
+
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rlAboutApp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="7dp">
@@ -547,16 +672,16 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <Switch
-                        android:id="@+id/switch80"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_toEndOf="@id/textView50"
-                        android:gravity="center"
-                        android:text="Switch"
-                        tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="47dp"
+                        android:layout_marginEnd="35dp"
+                        app:dividerColor="@color/bg_lighter" />
+
                 </RelativeLayout>
             </LinearLayout>
 

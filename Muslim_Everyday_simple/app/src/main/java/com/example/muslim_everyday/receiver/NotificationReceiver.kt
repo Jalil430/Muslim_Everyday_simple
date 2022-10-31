@@ -26,7 +26,7 @@ class NotificationReceiver : BroadcastReceiver() {
     @Suppress("NAME_SHADOWING")
     override fun onReceive(context: Context, intent: Intent) {
         val sharedPref = context.getSharedPreferences("Notifications", Context.MODE_PRIVATE) ?: return
-        val isNotificationEnabled = sharedPref.getBoolean("isNotificationEnabled", false)
+        val isNotificationEnabled = sharedPref.getBoolean("isAzanEnabled", false)
 
         if (isNotificationEnabled) {
             val whichPrayerTimeNow = intent.getIntExtra(Constants.PRAYER_TIME_NOW, 0)

@@ -12,10 +12,7 @@ import android.os.AsyncTask
 import android.os.Handler
 import android.util.Log
 import android.widget.Toast
-import androidx.core.app.ComponentActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.muslim_everyday.receiver.NotificationReceiver
-import com.example.muslim_everyday.view_model.ViewModelNotifications
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -25,10 +22,9 @@ import java.net.URL
 import java.net.URLConnection
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.atomic.AtomicInteger
 
 
-object NotificationUtils {
+object AzkarNotificationUtils {
     // Prayer timings variables
         var country : String? = null
         var state : String? = null
@@ -57,7 +53,7 @@ object NotificationUtils {
 
 
     fun enableNotification(context: Context) {
-        DataTask().execute()
+        AzkarDataTask().execute()
         Handler().postDelayed({
             setCalendar(context)
 
@@ -164,7 +160,8 @@ object NotificationUtils {
 }
 
 @Suppress("DEPRECATION")
-private class DataTask : AsyncTask<Void?, Void?, JSONObject?>() {
+private class AzkarDataTask : AsyncTask<Void?, Void?, JSONObject?>() {
+
     @Deprecated("Deprecated in Java")
     override fun doInBackground(vararg params: Void?): JSONObject? {
         val str = "https://muslimsalat.com/Oyskhara.json?key=084c27252d935e5c202be396026a5adf"
@@ -199,24 +196,27 @@ private class DataTask : AsyncTask<Void?, Void?, JSONObject?>() {
     override fun onPostExecute(response: JSONObject?) {
         if (response != null) {
             try {
-                // Get location
-                NotificationUtils.country = response.get("country").toString()
-                NotificationUtils.state = response.get("state").toString()
-                NotificationUtils.city = response.get("city").toString()
-                NotificationUtils.location = "${NotificationUtils.country}, ${NotificationUtils.state}, ${NotificationUtils.city}"
+                AzanNotificationUtils.apply {
+                    // Get location
+                    country = response.get("country").toString()
+                    state = response.get("state").toString()
+                    city = response.get("city").toString()
+                    location = "$country, $state, $city"
 
-                // get date
-                NotificationUtils.date = response.getJSONArray("items").getJSONObject(0).get("date_for").toString()
+                    // get date
+                    date = response.getJSONArray("items").getJSONObject(0).get("date_for").toString()
 
-                // Get namaz timings
-                NotificationUtils.mFajr = response.getJSONArray("items").getJSONObject(0).get("fajr").toString()
-                NotificationUtils.mDhuhr = response.getJSONArray("items").getJSONObject(0).get("dhuhr").toString()
-                NotificationUtils.mAsr = response.getJSONArray("items").getJSONObject(0).get("asr").toString()
-                NotificationUtils.mMaghrib = response.getJSONArray("items").getJSONObject(0).get("maghrib").toString()
-                NotificationUtils.mIsha = response.getJSONArray("items").getJSONObject(0).get("isha").toString()
+                    // Get namaz timings
+                    mFajr = response.getJSONArray("items").getJSONObject(0).get("fajr").toString()
+                    mDhuhr = response.getJSONArray("items").getJSONObject(0).get("dhuhr").toString()
+                    mAsr = response.getJSONArray("items").getJSONObject(0).get("asr").toString()
+                    mMaghrib = response.getJSONArray("items").getJSONObject(0).get("maghrib").toString()
+                    mIsha = response.getJSONArray("items").getJSONObject(0).get("isha").toString()
+                }
             } catch (ex: JSONException) {
                 Log.e("MyApp", "JSON")
             }
         }
     }
+
 }

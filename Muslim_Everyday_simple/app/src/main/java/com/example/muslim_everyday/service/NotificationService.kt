@@ -4,13 +4,9 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.*
-import android.widget.Toast
-import androidx.core.app.ComponentActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStore
-import androidx.lifecycle.ViewModelStoreOwner
-import com.example.muslim_everyday.util.NotificationUtils
-import com.example.muslim_everyday.view_model.ViewModelNotifications
+import com.example.muslim_everyday.util.AzanNotificationUtils
+import com.example.muslim_everyday.util.AzkarNotificationUtils
+import com.example.muslim_everyday.util.TasbihNotificationUtils
 
 class NotificationService() : Service() {
     private var serviceLooper: Looper? = null
@@ -24,11 +20,19 @@ class NotificationService() : Service() {
             // For our sample, we just sleep for 5 seconds.
             try {
                 val sharedPref = getSharedPreferences("Notifications", Context.MODE_PRIVATE) ?: return
-                val isNotificationEnabled = sharedPref.getBoolean("isNotificationEnabled", false)
-                if (isNotificationEnabled) {
-                    NotificationUtils.enableNotification(this@NotificationService)
-                }
+                val isAzanEnabled = sharedPref.getBoolean("isAzanEnabled", false)
+                val isTasbihEnabled = sharedPref.getBoolean("isTasbihEnabled", false)
+                val isAzkarEnabled = sharedPref.getBoolean("isAzkarEnabled", false)
 
+                if (isAzanEnabled) {
+                    AzanNotificationUtils.enableNotification(this@NotificationService)
+                }
+                if (isTasbihEnabled) {
+                    TasbihNotificationUtils.enableNotification(this@NotificationService)
+                }
+                if (isAzkarEnabled) {
+                    AzkarNotificationUtils.enableNotification(this@NotificationService)
+                }
             } catch (e: InterruptedException) {
                 // Restore interrupt status.
                 Thread.currentThread().interrupt()
