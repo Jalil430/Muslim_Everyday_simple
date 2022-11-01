@@ -12,7 +12,7 @@ import android.os.AsyncTask
 import android.os.Handler
 import android.util.Log
 import android.widget.Toast
-import com.example.muslim_everyday.receiver.NotificationReceiver
+import com.example.muslim_everyday.receiver.AzanNotificationReceiver
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -46,42 +46,36 @@ object AzanNotificationUtils {
         private var ishaDate : Date? = null
 
     // Notification
-        private var alarmManager: AlarmManager? = null
-        private var pendingIntent: PendingIntent? = null
         private var calendar: Calendar? = null
         private var whichPrayerTimeNow = 1
 
 
     fun enableNotification(context: Context) {
-        AzanDataTask().execute()
+        DataTask().execute()
         Handler().postDelayed({
             setCalendar(context)
 
-            val intent = Intent(context, NotificationReceiver::class.java).apply {
+            val intent = Intent(context, AzanNotificationReceiver::class.java).apply {
                 putExtra(Constants.PRAYER_TIME_NOW, whichPrayerTimeNow)
             }
 
-            pendingIntent = PendingIntent.getBroadcast(
+            val pendingIntent = PendingIntent.getBroadcast(
                 context,
                 Utils.getRandomInt(),
                 intent,
                 PendingIntent.FLAG_IMMUTABLE
             )
 
-            alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
+            val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
 
             if (System.currentTimeMillis() < calendar!!.timeInMillis) {
-                alarmManager!!.setExact(
+                alarmManager.setExact(
                     AlarmManager.RTC_WAKEUP,
                     calendar!!.timeInMillis,
                     pendingIntent
                 )
             }
         }, 1500)
-    }
-
-    fun cancelNotification() {
-        alarmManager?.cancel(pendingIntent)
     }
 
     private fun setCalendar(context: Context) {
@@ -160,7 +154,7 @@ object AzanNotificationUtils {
 }
 
 @Suppress("DEPRECATION")
-internal class AzanDataTask : AsyncTask<Void?, Void?, JSONObject?>() {
+class DataTask : AsyncTask<Void?, Void?, JSONObject?>() {
     @Deprecated("Deprecated in Java")
     override fun doInBackground(vararg params: Void?): JSONObject? {
         val str = "https://muslimsalat.com/Oyskhara.json?key=084c27252d935e5c202be396026a5adf"

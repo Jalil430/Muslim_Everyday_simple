@@ -8,36 +8,19 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
-import android.os.AsyncTask
 import android.os.Handler
-import android.util.Log
 import android.widget.Toast
-import com.example.muslim_everyday.receiver.NotificationReceiver
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
-import java.net.URL
-import java.net.URLConnection
+import com.example.muslim_everyday.receiver.AzkarNotificationReceiver
+import com.example.muslim_everyday.util.AzanNotificationUtils.date
+import com.example.muslim_everyday.util.AzanNotificationUtils.mAsr
+import com.example.muslim_everyday.util.AzanNotificationUtils.mDhuhr
+import com.example.muslim_everyday.util.AzanNotificationUtils.mFajr
+import com.example.muslim_everyday.util.AzanNotificationUtils.mIsha
+import com.example.muslim_everyday.util.AzanNotificationUtils.mMaghrib
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 object AzkarNotificationUtils {
-    // Prayer timings variables
-        var country : String? = null
-        var state : String? = null
-        var city : String? = null
-        var location : String? = null
-        var date : String? = null
-
-        var mFajr : String? = null
-        var mDhuhr : String? = null
-        var mAsr : String? = null
-        var mMaghrib : String? = null
-        var mIsha : String? = null
-
         private var dateFormat : SimpleDateFormat? = null
         private var fajrDate : Date? = null
         private var dhuhrDate : Date? = null
@@ -46,42 +29,35 @@ object AzkarNotificationUtils {
         private var ishaDate : Date? = null
 
     // Notification
-        private var alarmManager: AlarmManager? = null
-        private var pendingIntent: PendingIntent? = null
         private var calendar: Calendar? = null
-        private var whichPrayerTimeNow = 1
-
+        private var whichAzkarTimeNow = 1
 
     fun enableNotification(context: Context) {
-        AzkarDataTask().execute()
+        DataTask().execute()
         Handler().postDelayed({
             setCalendar(context)
 
-            val intent = Intent(context, NotificationReceiver::class.java).apply {
-                putExtra(Constants.PRAYER_TIME_NOW, whichPrayerTimeNow)
+            val intent = Intent(context, AzkarNotificationReceiver::class.java).apply {
+                putExtra(Constants.PRAYER_TIME_NOW, whichAzkarTimeNow)
             }
 
-            pendingIntent = PendingIntent.getBroadcast(
+            val pendingIntent = PendingIntent.getBroadcast(
                 context,
                 Utils.getRandomInt(),
                 intent,
                 PendingIntent.FLAG_IMMUTABLE
             )
 
-            alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
+            val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
 
             if (System.currentTimeMillis() < calendar!!.timeInMillis) {
-                alarmManager!!.setExact(
+                alarmManager.setExact(
                     AlarmManager.RTC_WAKEUP,
                     calendar!!.timeInMillis,
                     pendingIntent
                 )
             }
         }, 1500)
-    }
-
-    fun cancelNotification() {
-        alarmManager?.cancel(pendingIntent)
     }
 
     private fun setCalendar(context: Context) {
@@ -91,42 +67,18 @@ object AzkarNotificationUtils {
         val fajrTime = Calendar.getInstance()
         fajrTime.time = fajrDate!!
 
-        val dhuhrTime = Calendar.getInstance()
-        dhuhrTime.time = dhuhrDate!!
-
         val asrTime = Calendar.getInstance()
         asrTime.time = asrDate!!
 
-        val maghribTime = Calendar.getInstance()
-        maghribTime.time = maghribDate!!
-
-        val ishaTime = Calendar.getInstance()
-        ishaTime.time = ishaDate!!
-
-        if (System.currentTimeMillis() < fajrTime.timeInMillis) {
-            calendar?.timeInMillis = fajrTime.timeInMillis
-            whichPrayerTimeNow = 1
-            Toast.makeText(context, "Fajr - ${fajrTime.time}", Toast.LENGTH_LONG).show()
+        if (System.currentTimeMillis() < fajrTime.timeInMillis + 1800000) {
+            calendar?.timeInMillis = fajrTime.timeInMillis + 1800000
+            whichAzkarTimeNow = 1
+            Toast.makeText(context, "Morning azkars - ${fajrTime.time}", Toast.LENGTH_LONG).show()
         }
-        if (System.currentTimeMillis() < dhuhrTime.timeInMillis && System.currentTimeMillis() > fajrTime.timeInMillis) {
-            calendar?.timeInMillis = dhuhrTime.timeInMillis
-            whichPrayerTimeNow = 2
-            Toast.makeText(context, "Dhuhr - ${dhuhrTime.time}", Toast.LENGTH_LONG).show()
-        }
-        if (System.currentTimeMillis() < asrTime.timeInMillis && System.currentTimeMillis() > dhuhrTime.timeInMillis) {
-            calendar?.timeInMillis = asrTime.timeInMillis
-            whichPrayerTimeNow = 3
-            Toast.makeText(context, "Asr - ${asrTime.time}", Toast.LENGTH_LONG).show()
-        }
-        if (System.currentTimeMillis() < maghribTime.timeInMillis && System.currentTimeMillis() > asrTime.timeInMillis) {
-            calendar?.timeInMillis = maghribTime.timeInMillis
-            whichPrayerTimeNow = 4
-            Toast.makeText(context, "Maghrib - ${maghribTime.time}", Toast.LENGTH_LONG).show()
-        }
-        if (System.currentTimeMillis() < ishaTime.timeInMillis && System.currentTimeMillis() > maghribTime.timeInMillis) {
-            calendar?.timeInMillis = ishaTime.timeInMillis
-            whichPrayerTimeNow = 5
-            Toast.makeText(context, "Isha - ${ishaTime.time}", Toast.LENGTH_LONG).show()
+        if (System.currentTimeMillis() < asrTime.timeInMillis + 1800000 && System.currentTimeMillis() > fajrTime.timeInMillis + 1800000) {
+            calendar?.timeInMillis = asrTime.timeInMillis + 1800000
+            whichAzkarTimeNow = 2
+            Toast.makeText(context, "Evening azkars - ${asrTime.time}", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -157,66 +109,4 @@ object AzkarNotificationUtils {
     }
 
     private fun parseDate(source: String) = dateFormat?.parse(source) as Date
-}
-
-@Suppress("DEPRECATION")
-private class AzkarDataTask : AsyncTask<Void?, Void?, JSONObject?>() {
-
-    @Deprecated("Deprecated in Java")
-    override fun doInBackground(vararg params: Void?): JSONObject? {
-        val str = "https://muslimsalat.com/Oyskhara.json?key=084c27252d935e5c202be396026a5adf"
-        val urlConn: URLConnection?
-        var bufferedReader: BufferedReader? = null
-        return try {
-            val url = URL(str)
-            urlConn = url.openConnection()
-            bufferedReader = BufferedReader(InputStreamReader(urlConn.getInputStream()))
-            val stringBuffer = StringBuffer()
-            var line: String?
-            while (bufferedReader.readLine().also { line = it } != null) {
-                stringBuffer.append(line)
-            }
-            JSONObject(stringBuffer.toString())
-        } catch (ex: Exception) {
-            Log.e("MyApp", "Ex")
-            null
-        } finally {
-            if (bufferedReader != null) {
-                try {
-                    bufferedReader.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                    Log.e("MyApp", "IO")
-                }
-            }
-        }
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onPostExecute(response: JSONObject?) {
-        if (response != null) {
-            try {
-                AzanNotificationUtils.apply {
-                    // Get location
-                    country = response.get("country").toString()
-                    state = response.get("state").toString()
-                    city = response.get("city").toString()
-                    location = "$country, $state, $city"
-
-                    // get date
-                    date = response.getJSONArray("items").getJSONObject(0).get("date_for").toString()
-
-                    // Get namaz timings
-                    mFajr = response.getJSONArray("items").getJSONObject(0).get("fajr").toString()
-                    mDhuhr = response.getJSONArray("items").getJSONObject(0).get("dhuhr").toString()
-                    mAsr = response.getJSONArray("items").getJSONObject(0).get("asr").toString()
-                    mMaghrib = response.getJSONArray("items").getJSONObject(0).get("maghrib").toString()
-                    mIsha = response.getJSONArray("items").getJSONObject(0).get("isha").toString()
-                }
-            } catch (ex: JSONException) {
-                Log.e("MyApp", "JSON")
-            }
-        }
-    }
-
 }

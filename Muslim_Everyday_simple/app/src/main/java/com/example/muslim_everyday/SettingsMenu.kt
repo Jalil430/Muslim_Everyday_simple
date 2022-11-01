@@ -4,12 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.muslim_everyday.databinding.SettingsMenuBinding
-import com.example.muslim_everyday.service.NotificationService
+import com.example.muslim_everyday.service.AzanNotificationService
+import com.example.muslim_everyday.service.AzkarNotificationService
+import com.example.muslim_everyday.service.TasbihNotificationService
 
 class SettingsMenu : AppCompatActivity() {
     private lateinit var binding: SettingsMenuBinding
@@ -25,105 +26,73 @@ class SettingsMenu : AppCompatActivity() {
         binding = SettingsMenuBinding.bind(findViewById(R.id.rootSettingsMenu))
 
         val sharedPref = getSharedPreferences("Notifications", Context.MODE_PRIVATE) ?: return
+        val onButtonClickAnim = AnimationUtils.loadAnimation(this@SettingsMenu, R.anim.on_button_click)
 
         binding.apply {
+            swAzan.isClickable = false
+            swTasbih.isClickable = false
+            swAzkar.isClickable = false
+
+            isAzanEnabled = sharedPref.getBoolean("isAzanEnabled?", false)
+            swAzan.isChecked = sharedPref.getBoolean("isAzanEnabled?", false)
+
+            isTasbihEnabled = sharedPref.getBoolean("isTasbihEnabled?", false)
+            swTasbih.isChecked = sharedPref.getBoolean("isTasbihEnabled?", false)
+
+            isAzkarEnabled = sharedPref.getBoolean("IsAzkarEnabled?", false)
+            swAzkar.isChecked = sharedPref.getBoolean("IsAzkarEnabled?", false)
+
             btnBack.setOnClickListener {
                 onBackPressed()
             }
 
-            onClickRelativeLayoutListener(rlAzan) {
-                if (it) {
-                    isAzanEnabled = true
-                    with(sharedPref.edit()) {
-                        this.putBoolean("isAzanEnabled", isAzanEnabled)
-                        apply()
-                    }
+            rlAzan.setOnClickListener {
+                isAzanEnabled = !isAzanEnabled
 
-                    Intent(this@SettingsMenu, NotificationService::class.java).also { intent ->
-                        startService(intent)
-                    }
+                with (sharedPref.edit()) {
+                    putBoolean("isAzanEnabled?", isAzanEnabled)
+                    apply()
+                }
+                rlAzan.startAnimation(onButtonClickAnim)
 
-                    swAzan.isChecked = true
-                } else {
-                    isAzanEnabled = false
-                    with(sharedPref.edit()) {
-                        this.putBoolean("isAzanEnabled", isAzanEnabled)
-                        apply()
-                    }
+                swAzan.isChecked = !swAzan.isChecked
 
-                    Intent(this@SettingsMenu, NotificationService::class.java).also { intent ->
-                        startService(intent)
-                    }
-
-                    swAzan.isChecked = false
+                Intent(this@SettingsMenu, AzanNotificationService::class.java).also {
+                    startService(it)
                 }
             }
-            onClickRelativeLayoutListener(rlTasbih) {
-                if (it) {
-                    isTasbihEnabled = true
-                    with(sharedPref.edit()) {
-                        this.putBoolean("isTasbihEnabled", isAzanEnabled)
-                        apply()
-                    }
 
-                    Intent(this@SettingsMenu, NotificationService::class.java).also { intent ->
-                        startService(intent)
-                    }
+            rlTasbih.setOnClickListener {
+                isTasbihEnabled = !isTasbihEnabled
 
-                    swTasbih.isChecked = true
-                } else {
-                    isTasbihEnabled = false
-                    with(sharedPref.edit()) {
-                        this.putBoolean("isTasbihEnabled", isAzanEnabled)
-                        apply()
-                    }
+                with (sharedPref.edit()) {
+                    putBoolean("isTasbihEnabled?", isTasbihEnabled)
+                    apply()
+                }
+                rlTasbih.startAnimation(onButtonClickAnim)
 
-                    Intent(this@SettingsMenu, NotificationService::class.java).also { intent ->
-                        startService(intent)
-                    }
+                swTasbih.isChecked = !swTasbih.isChecked
 
-                    swTasbih.isChecked = false
+                Intent(this@SettingsMenu, TasbihNotificationService::class.java).also {
+                    startService(it)
                 }
             }
-            onClickRelativeLayoutListener(rlTasbih) {
-                if (it) {
-                    isAzkarEnabled = true
-                    with(sharedPref.edit()) {
-                        this.putBoolean("isAzkarEnabled", isAzanEnabled)
-                        apply()
-                    }
 
-                    Intent(this@SettingsMenu, NotificationService::class.java).also { intent ->
-                        startService(intent)
-                    }
+            rlAzkar.setOnClickListener {
+                isAzkarEnabled = !isAzkarEnabled
 
-                    swAzkar.isChecked = true
-                } else {
-                    isAzkarEnabled = false
-                    with(sharedPref.edit()) {
-                        this.putBoolean("isAzkarEnabled", isAzanEnabled)
-                        apply()
-                    }
+                with (sharedPref.edit()) {
+                    putBoolean("isAzkarEnabled?", isAzkarEnabled)
+                    apply()
+                }
+                rlAzkar.startAnimation(onButtonClickAnim)
 
-                    Intent(this@SettingsMenu, NotificationService::class.java).also { intent ->
-                        startService(intent)
-                    }
+                swAzkar.isChecked = !swAzkar.isChecked
 
-                    swAzkar.isChecked = false
+                Intent(this@SettingsMenu, AzkarNotificationService::class.java).also {
+                    startService(it)
                 }
             }
-        }
-    }
-
-    private fun onClickRelativeLayoutListener(view: RelativeLayout, callback: (Boolean) -> Unit) {
-        var isChecked = false
-        val onButtonClickAnim = AnimationUtils.loadAnimation(this, R.anim.on_button_click)
-
-        view.setOnClickListener {
-            isChecked = !isChecked
-            it.startAnimation(onButtonClickAnim)
-
-            callback.invoke(isChecked)
         }
     }
 }

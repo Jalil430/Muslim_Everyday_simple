@@ -4,11 +4,9 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.*
-import com.example.muslim_everyday.util.AzanNotificationUtils
 import com.example.muslim_everyday.util.AzkarNotificationUtils
-import com.example.muslim_everyday.util.TasbihNotificationUtils
 
-class NotificationService() : Service() {
+class AzkarNotificationService : Service() {
     private var serviceLooper: Looper? = null
     private var serviceHandler: ServiceHandler? = null
 
@@ -20,19 +18,12 @@ class NotificationService() : Service() {
             // For our sample, we just sleep for 5 seconds.
             try {
                 val sharedPref = getSharedPreferences("Notifications", Context.MODE_PRIVATE) ?: return
-                val isAzanEnabled = sharedPref.getBoolean("isAzanEnabled", false)
-                val isTasbihEnabled = sharedPref.getBoolean("isTasbihEnabled", false)
-                val isAzkarEnabled = sharedPref.getBoolean("isAzkarEnabled", false)
+                val isAzkarEnabled = sharedPref.getBoolean("isAzkarEnabled?", false)
 
-                if (isAzanEnabled) {
-                    AzanNotificationUtils.enableNotification(this@NotificationService)
-                }
-                if (isTasbihEnabled) {
-                    TasbihNotificationUtils.enableNotification(this@NotificationService)
-                }
                 if (isAzkarEnabled) {
-                    AzkarNotificationUtils.enableNotification(this@NotificationService)
+                    AzkarNotificationUtils.enableNotification(this@AzkarNotificationService)
                 }
+
             } catch (e: InterruptedException) {
                 // Restore interrupt status.
                 Thread.currentThread().interrupt()

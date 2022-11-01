@@ -11,12 +11,12 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.example.muslim_everyday.R
 import com.example.muslim_everyday.SettingsMenu
-import com.example.muslim_everyday.service.NotificationService
+import com.example.muslim_everyday.service.AzanNotificationService
 import com.example.muslim_everyday.util.Constants
 import com.example.muslim_everyday.util.Utils
 
-class NotificationReceiver : BroadcastReceiver() {
-    private var notificationManager: NotificationManager? = null
+class AzanNotificationReceiver : BroadcastReceiver() {
+    private var namazNotificationManager: NotificationManager? = null
     private var builderFajr: NotificationCompat.Builder? = null
     private var builderDhuhr: NotificationCompat.Builder? = null
     private var builderAsr: NotificationCompat.Builder? = null
@@ -26,20 +26,20 @@ class NotificationReceiver : BroadcastReceiver() {
     @Suppress("NAME_SHADOWING")
     override fun onReceive(context: Context, intent: Intent) {
         val sharedPref = context.getSharedPreferences("Notifications", Context.MODE_PRIVATE) ?: return
-        val isNotificationEnabled = sharedPref.getBoolean("isAzanEnabled", false)
+        val isAzanEnabled = sharedPref.getBoolean("isAzanEnabled?", false)
 
-        if (isNotificationEnabled) {
+        if (isAzanEnabled) {
             val whichPrayerTimeNow = intent.getIntExtra(Constants.PRAYER_TIME_NOW, 0)
             startNotification(context, whichPrayerTimeNow)
 
-            Intent(context, NotificationService::class.java).also { intent ->
+            Intent(context, AzanNotificationService::class.java).also { intent ->
                 context.startService(intent)
             }
         }
     }
 
     private fun startNotification(context: Context, index: Int) {
-        createNotificationChannel(context)
+        createNamazNotificationChannel(context)
 
         when (index) {
             1 -> {
@@ -65,7 +65,7 @@ class NotificationReceiver : BroadcastReceiver() {
         }
     }
 
-    private fun createNotificationChannel(context: Context) {
+    private fun createNamazNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name : CharSequence = "NamazReminderChannel"
             val description = "Channel Namaz"
@@ -73,14 +73,14 @@ class NotificationReceiver : BroadcastReceiver() {
             val channel = NotificationChannel("namazTimings", name, importance)
             channel.description = description
 
-            notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager?.createNotificationChannel(channel)
+            namazNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            namazNotificationManager?.createNotificationChannel(channel)
         } else {
             Toast.makeText(context, "Alarm failed", Toast.LENGTH_LONG).show()
         }
     }
 
-    // Times of Namaz methods
+    // When it's namaz time
         // Fajr
             private fun fajrSetNotification(context: Context) {
                 val intent = Intent(context, SettingsMenu::class.java)
@@ -96,7 +96,7 @@ class NotificationReceiver : BroadcastReceiver() {
                     .setAutoCancel(true)
             }
             private fun fajrStartNotification() {
-                notificationManager?.notify(1, builderFajr?.build())
+                namazNotificationManager?.notify(1, builderFajr?.build())
             }
             // Dhuhr
             private fun dhuhrSetNotification(context: Context) {
@@ -113,7 +113,7 @@ class NotificationReceiver : BroadcastReceiver() {
                     .setAutoCancel(true)
             }
             private fun dhuhrStartNotification() {
-                notificationManager?.notify(2, builderDhuhr?.build())
+                namazNotificationManager?.notify(2, builderDhuhr?.build())
             }
             // Asr
             private fun asrSetNotification(context: Context) {
@@ -130,7 +130,7 @@ class NotificationReceiver : BroadcastReceiver() {
                     .setAutoCancel(true)
             }
             private fun asrStartNotification() {
-                notificationManager?.notify(3, builderAsr?.build())
+                namazNotificationManager?.notify(3, builderAsr?.build())
             }
             //Maghrib
             private fun maghribSetNotification(context: Context) {
@@ -147,7 +147,7 @@ class NotificationReceiver : BroadcastReceiver() {
                     .setAutoCancel(true)
             }
             private fun maghribStartNotification() {
-                notificationManager?.notify(4, builderMaghrib?.build())
+                namazNotificationManager?.notify(4, builderMaghrib?.build())
             }
             //Isha
             private fun ishaSetNotification(context: Context) {
@@ -164,7 +164,7 @@ class NotificationReceiver : BroadcastReceiver() {
                     .setAutoCancel(true)
             }
             private fun ishaStartNotification() {
-                notificationManager?.notify(5, builderIsha?.build())
+                namazNotificationManager?.notify(5, builderIsha?.build())
             }
 
     private fun getRandomRequestCode() = Utils.getRandomInt()
