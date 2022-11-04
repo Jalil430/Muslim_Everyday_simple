@@ -10,21 +10,21 @@ import com.example.muslim_everyday.R
 import com.example.muslim_everyday.data_class.Question
 import com.example.muslim_everyday.databinding.QuestionCardItemBinding
 
-class FirstSettingRVAdapter(private val questionsList: List<Question>): RecyclerView.Adapter<MyViewHolder2>() {
+class FirstSettingRVAdapter(private val questionsList: List<Question>): RecyclerView.Adapter<QuestionCardViewHolder>() {
     private lateinit var binding: QuestionCardItemBinding
     private lateinit var scaleInAnim: Animation
     private lateinit var scaleOutAnim: Animation
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder2 {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionCardViewHolder {
         binding = QuestionCardItemBinding.inflate(LayoutInflater.from(parent.context))
 
         scaleInAnim = AnimationUtils.loadAnimation(parent.context,R.anim.scale_in)
         scaleOutAnim = AnimationUtils.loadAnimation(parent.context, R.anim.scale_out)
 
-        return MyViewHolder2(binding, scaleInAnim, scaleOutAnim)
+        return QuestionCardViewHolder(binding, scaleInAnim, scaleOutAnim)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder2, position: Int) {
+    override fun onBindViewHolder(holder: QuestionCardViewHolder, position: Int) {
         val question = questionsList[position]
         holder.bind(question)
     }
@@ -34,7 +34,7 @@ class FirstSettingRVAdapter(private val questionsList: List<Question>): Recycler
     }
 }
 
-class MyViewHolder2(private val binding: QuestionCardItemBinding,
+class QuestionCardViewHolder(private val binding: QuestionCardItemBinding,
                    private val scaleInAnim: Animation,
                    private val scaleOutAnim: Animation):
     RecyclerView.ViewHolder(binding.root), Animation.AnimationListener {

@@ -14,10 +14,10 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="14dp"
-            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+            android:layout_width="@dimen/_37sdp"
+            android:layout_height="@dimen/_37sdp"
+            android:padding="@dimen/_8sdp"
+            app:srcCompat="@drawable/ic_button_back" />
 
         <TextView
             android:id="@+id/textView"
@@ -27,7 +27,7 @@
             android:fontFamily="@font/herou"
             android:text="Настройки"
             android:textColor="@color/blue_white"
-            android:textSize="23sp"
+            android:textSize="@dimen/_17ssp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -44,22 +44,22 @@
                 android:id="@+id/tittleAzan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/_9sdp"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center"
                 android:text="АЗАН"
                 android:textColor="@color/blue_white"
-                android:textSize="24sp"
+                android:textSize="@dimen/_15ssp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:layout_marginEnd="@dimen/_11sdp"
                 android:background="@drawable/round_back_secondary_100"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="@dimen/_9sdp">
 
                 <RelativeLayout
                     android:id="@+id/rlAzan"
@@ -68,32 +68,33 @@
 
                     <ImageView
                         android:id="@+id/icAzan"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@drawable/ic_notifications_white" />
 
                     <TextView
                         android:id="@+id/tvAzan"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/icAzan"
                         android:fontFamily="@font/herou"
                         android:text="Уведомлять об утреннем намазе"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/swAzan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/tvAzan"
+                        android:checked="true"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -101,9 +102,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
 
                 </RelativeLayout>
 
@@ -111,36 +114,36 @@
                     android:id="@+id/rlTasbih"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/icTasbih"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@drawable/ic_notifications_blue" />
 
                     <TextView
                         android:id="@+id/tvTasbih"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/icTasbih"
                         android:fontFamily="@font/herou"
                         android:text="Уведомлять о тасбихе"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/swTasbih"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/tvTasbih"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -148,56 +151,58 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/rlAzkar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="7dp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/icAzkar"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@drawable/ic_notifications_green" />
 
                     <TextView
                         android:id="@+id/tvAzkar"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/icAzkar"
                         android:fontFamily="@font/herou"
                         android:text="Уведомлять об азкарах"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/swAzkar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/tvAzkar"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -205,56 +210,55 @@
                 android:id="@+id/tittleQQQ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/_9sdp"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center"
                 android:text=".???????"
                 android:textColor="@color/blue_white"
-                android:textSize="24sp"
+                android:textSize="@dimen/_15ssp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:layout_marginEnd="@dimen/_11sdp"
                 android:background="@drawable/round_back_secondary_100"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="@dimen/_9sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="7dp">
+                    android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/imageView1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView1"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView1"
                         android:fontFamily="@font/herou"
                         android:text=".??????"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/switch4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/textView1"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -262,45 +266,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="7dp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView2"
                         android:fontFamily="@font/herou"
                         android:text=".??????"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/switch5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/textView2"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -308,44 +313,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView3"
                         android:fontFamily="@font/herou"
                         android:text=".??????"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/switch6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/textView3"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -353,45 +360,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/imageView4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView4"
                         android:fontFamily="@font/herou"
                         android:text=".??????"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/switch7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/textView4"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -399,45 +407,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="7dp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/imageView5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView5"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView5"
                         android:fontFamily="@font/herou"
                         android:text=".??????"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/switch8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/textView5"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -445,10 +454,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -456,56 +466,55 @@
                 android:id="@+id/tittleOther"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/_9sdp"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center"
                 android:text="ПРОЧЕЕ"
                 android:textColor="@color/blue_white"
-                android:textSize="24sp"
+                android:textSize="@dimen/_15ssp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:layout_marginEnd="@dimen/_11sdp"
                 android:background="@drawable/round_back_secondary_100"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="@dimen/_9sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="7dp">
+                    android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/imageView10"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView10"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView10"
                         android:fontFamily="@font/herou"
                         android:text=".??????"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/switch40"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/textView10"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -513,45 +522,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="7dp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/imageView20"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView20"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView20"
                         android:fontFamily="@font/herou"
                         android:text=".??????"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/switch50"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/textView20"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -559,44 +569,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/imageView30"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView30"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView30"
                         android:fontFamily="@font/herou"
                         android:text=".??????"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <Switch
                         android:id="@+id/switch60"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/textView30"
                         android:gravity="center"
-                        android:text="Switch"
                         tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -604,35 +616,37 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/rlHelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/imageView40"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_help" />
 
                     <TextView
                         android:id="@+id/textView40"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView40"
                         android:fontFamily="@font/herou"
                         android:text="Помощь"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -640,10 +654,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
 
                 </RelativeLayout>
 
@@ -651,25 +666,26 @@
                     android:id="@+id/rlAboutApp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="7dp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <ImageView
                         android:id="@+id/imageView50"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/_25ssp"
+                        android:layout_height="@dimen/_25ssp"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@android:drawable/ic_menu_info_details" />
 
                     <TextView
                         android:id="@+id/textView50"
-                        android:layout_width="260dp"
+                        android:layout_width="@dimen/_199sdp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_3sdp"
                         android:layout_toEndOf="@id/imageView50"
                         android:fontFamily="@font/herou"
                         android:text="О приложении"
                         android:textColor="@color/blue_white"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -677,10 +693,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="47dp"
-                        android:layout_marginEnd="35dp"
-                        app:dividerColor="@color/bg_lighter" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        app:dividerColor="@color/bg_lighter"
+                        app:dividerThickness="@dimen/_1sdp" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -689,11 +706,12 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_marginBottom="@dimen/_14sdp"
                 android:gravity="center"
                 android:text="@string/app_version"
-                android:textColor="#CCAEAEAE" />
+                android:textColor="#CCAEAEAE"
+                android:textSize="@dimen/_10ssp" />
         </LinearLayout>
     </ScrollView>
 

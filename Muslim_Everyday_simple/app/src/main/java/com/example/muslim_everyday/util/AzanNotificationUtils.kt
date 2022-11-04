@@ -75,7 +75,7 @@ object AzanNotificationUtils {
                     pendingIntent
                 )
             }
-        }, 1500)
+        }, 3000)
     }
 
     private fun setCalendar(context: Context) {
@@ -157,7 +157,7 @@ object AzanNotificationUtils {
 class DataTask : AsyncTask<Void?, Void?, JSONObject?>() {
     @Deprecated("Deprecated in Java")
     override fun doInBackground(vararg params: Void?): JSONObject? {
-        val str = "https://muslimsalat.com/Oyskhara.json?key=084c27252d935e5c202be396026a5adf"
+        val str = "https://muslimsalat.com/Grozniy.json?key=084c27252d935e5c202be396026a5adf"
         val urlConn: URLConnection?
         var bufferedReader: BufferedReader? = null
         return try {

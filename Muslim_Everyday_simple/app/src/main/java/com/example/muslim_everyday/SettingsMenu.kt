@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.muslim_everyday.databinding.SettingsMenuBinding
 import com.example.muslim_everyday.service.AzanNotificationService
@@ -13,7 +12,7 @@ import com.example.muslim_everyday.service.AzkarNotificationService
 import com.example.muslim_everyday.service.TasbihNotificationService
 
 class SettingsMenu : AppCompatActivity() {
-    private lateinit var binding: SettingsMenuBinding
+    private var binding: SettingsMenuBinding? = null
     private var isAzanEnabled = false
     private var isTasbihEnabled = false
     private var isAzkarEnabled = false
@@ -28,7 +27,7 @@ class SettingsMenu : AppCompatActivity() {
         val sharedPref = getSharedPreferences("Notifications", Context.MODE_PRIVATE) ?: return
         val onButtonClickAnim = AnimationUtils.loadAnimation(this@SettingsMenu, R.anim.on_button_click)
 
-        binding.apply {
+        binding?.apply {
             swAzan.isClickable = false
             swTasbih.isClickable = false
             swAzkar.isClickable = false
@@ -39,8 +38,8 @@ class SettingsMenu : AppCompatActivity() {
             isTasbihEnabled = sharedPref.getBoolean("isTasbihEnabled?", false)
             swTasbih.isChecked = sharedPref.getBoolean("isTasbihEnabled?", false)
 
-            isAzkarEnabled = sharedPref.getBoolean("IsAzkarEnabled?", false)
-            swAzkar.isChecked = sharedPref.getBoolean("IsAzkarEnabled?", false)
+            isAzkarEnabled = sharedPref.getBoolean("isAzkarEnabled?", false)
+            swAzkar.isChecked = sharedPref.getBoolean("isAzkarEnabled?", false)
 
             btnBack.setOnClickListener {
                 onBackPressed()

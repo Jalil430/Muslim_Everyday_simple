@@ -87,24 +87,24 @@ object TasbihNotificationUtils {
         val ishaTime = Calendar.getInstance()
         ishaTime.time = ishaDate!!
 
-        if (System.currentTimeMillis() < fajrTime.timeInMillis + 600000) {
-            calendar?.timeInMillis = fajrTime.timeInMillis + 600000
+        if (System.currentTimeMillis() < fajrTime.timeInMillis + tenMin) {
+            calendar?.timeInMillis = fajrTime.timeInMillis + tenMin
             Toast.makeText(context, "Tasbih - ${fajrTime.time}", Toast.LENGTH_LONG).show()
         }
-        if (System.currentTimeMillis() < dhuhrTime.timeInMillis + 600000 && System.currentTimeMillis() > fajrTime.timeInMillis + 600000) {
-            calendar?.timeInMillis = dhuhrTime.timeInMillis + 600000
+        if (System.currentTimeMillis() < dhuhrTime.timeInMillis + tenMin && System.currentTimeMillis() > fajrTime.timeInMillis + tenMin) {
+            calendar?.timeInMillis = dhuhrTime.timeInMillis + tenMin
             Toast.makeText(context, "Tasbih - ${dhuhrTime.time}", Toast.LENGTH_LONG).show()
         }
-        if (System.currentTimeMillis() < asrTime.timeInMillis + 600000 && System.currentTimeMillis() > dhuhrTime.timeInMillis + 600000) {
-            calendar?.timeInMillis = asrTime.timeInMillis + 600000
+        if (System.currentTimeMillis() < asrTime.timeInMillis + tenMin && System.currentTimeMillis() > dhuhrTime.timeInMillis + tenMin) {
+            calendar?.timeInMillis = asrTime.timeInMillis + tenMin
             Toast.makeText(context, "Tasbih - ${asrTime.time}", Toast.LENGTH_LONG).show()
         }
-        if (System.currentTimeMillis() < maghribTime.timeInMillis + 600000 && System.currentTimeMillis() > asrTime.timeInMillis + 600000) {
-            calendar?.timeInMillis = maghribTime.timeInMillis + 600000
+        if (System.currentTimeMillis() < maghribTime.timeInMillis + tenMin && System.currentTimeMillis() > asrTime.timeInMillis + tenMin) {
+            calendar?.timeInMillis = maghribTime.timeInMillis + tenMin
             Toast.makeText(context, "Tasbih - ${maghribTime.time}", Toast.LENGTH_LONG).show()
         }
-        if (System.currentTimeMillis() < ishaTime.timeInMillis + 600000 && System.currentTimeMillis() > maghribTime.timeInMillis + 600000) {
-            calendar?.timeInMillis = ishaTime.timeInMillis + 600000
+        if (System.currentTimeMillis() < ishaTime.timeInMillis + tenMin && System.currentTimeMillis() > maghribTime.timeInMillis + tenMin) {
+            calendar?.timeInMillis = ishaTime.timeInMillis + tenMin
             Toast.makeText(context, "Tasbih - ${ishaTime.time}", Toast.LENGTH_LONG).show()
         }
     }
@@ -136,4 +136,6 @@ object TasbihNotificationUtils {
     }
 
     private fun parseDate(source: String) = dateFormat?.parse(source) as Date
+
+    private const val tenMin = 600000
 }

@@ -70,13 +70,13 @@ object AzkarNotificationUtils {
         val asrTime = Calendar.getInstance()
         asrTime.time = asrDate!!
 
-        if (System.currentTimeMillis() < fajrTime.timeInMillis + 1800000) {
-            calendar?.timeInMillis = fajrTime.timeInMillis + 1800000
+        if (System.currentTimeMillis() < fajrTime.timeInMillis + thirteenMin) {
+            calendar?.timeInMillis = fajrTime.timeInMillis + thirteenMin
             whichAzkarTimeNow = 1
             Toast.makeText(context, "Morning azkars - ${fajrTime.time}", Toast.LENGTH_LONG).show()
         }
-        if (System.currentTimeMillis() < asrTime.timeInMillis + 1800000 && System.currentTimeMillis() > fajrTime.timeInMillis + 1800000) {
-            calendar?.timeInMillis = asrTime.timeInMillis + 1800000
+        if (System.currentTimeMillis() < asrTime.timeInMillis + thirteenMin && System.currentTimeMillis() > fajrTime.timeInMillis + thirteenMin) {
+            calendar?.timeInMillis = asrTime.timeInMillis + thirteenMin
             whichAzkarTimeNow = 2
             Toast.makeText(context, "Evening azkars - ${asrTime.time}", Toast.LENGTH_LONG).show()
         }
@@ -109,4 +109,6 @@ object AzkarNotificationUtils {
     }
 
     private fun parseDate(source: String) = dateFormat?.parse(source) as Date
+
+    private const val thirteenMin = 1800000
 }
