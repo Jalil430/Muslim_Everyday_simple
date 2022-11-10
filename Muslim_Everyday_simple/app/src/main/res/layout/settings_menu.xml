@@ -26,8 +26,9 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/herou"
             android:text="Настройки"
+            android:textAllCaps="true"
             android:textColor="@color/blue_white"
-            android:textSize="@dimen/_17ssp"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold" />
     </RelativeLayout>
 

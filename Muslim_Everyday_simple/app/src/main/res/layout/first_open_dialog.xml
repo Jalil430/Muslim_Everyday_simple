@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="#3F51B5"
+    app:cardCornerRadius="0dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTittle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:text="Описание приложения"
+            android:textAllCaps="true"
+            android:textColor="@color/blue_white"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvPreface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_toEndOf="@id/icAzan"
+            android:fontFamily="@font/herou"
+            android:text="В большинстве своем, мусульмане кроме намаза, поста, рузбы и других самых первостепенных своих обязательств не делают.                           И чтобы помочь мусульманам начать совершать сунну Пророка Мухаммада (да благославит его Аллах и приветствует)"
+            android:textColor="@color/blue_white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
